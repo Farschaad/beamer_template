@@ -1,0 +1,118 @@
+\documentclass[10pt]{beamer}
+\usetheme[
+  bullet=circle, % Other option: square
+  bigpagenumber, % circled page number on lower right
+  topline=true,  % colored bar at the top of the frame
+]{Zurich}
+
+\setbeamercovered{invisible}
+
+%-----------------------------------------------------------------------------
+% PACKAGES TEMPLATE
+%-----------------------------------------------------------------------------
+\input{configuration}
+
+\usepackage{appendixnumberbeamer}
+\setbeamertemplate{frametitle continuation}{}
+\usepackage{wasysym}
+
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}
+ {\leavevmode\leftskip=1em{\inserttocsectionnumber.\inserttocsubsectionnumber.}\hskip0.5em\inserttocsubsection\vspace{.05ex}\par}
+
+%-----------------------------------------------------------------------------
+% DOCUMENT PROPERTIES
+%-----------------------------------------------------------------------------
+
+% title
+\title{Automatic Verification of Interactive Multimedia Scenarios with
+  Branching Behavior}
+
+% author
+\author[Jaime Arias - LaBRI - Inria Bordeaux Sud-Ouest (2016)]{\alert{Jaime Arias}, Myriam
+  Desainte-Catherine and Camilo Rueda}
+
+% institute
+\institute{Universit\'e de Bordeaux, LaBRI, UMR 5800\\ Inria - Bordeaux
+  Sud-Ouest}
+
+\date{Colloquium Computer Science - University of Groningen\\March 2, 2016}
+\titlegraphic{\includegraphics[height=2cm]{logos.pdf}}
+
+%-----------------------------------------------------------------------------
+
+\AtBeginSection[]
+{%
+  \begin{frame}
+    \frametitle{Outline}
+    \tableofcontents[currentsection,hideothersubsections]
+  \end{frame}
+}
+
+\begin{document}
+
+
+% ----------------------------------------------------------------------------
+
+\begin{frame}[t,plain]
+  \titlepage%
+\end{frame}
+% ----------------------------------------------------------------------------
+
+\setcounter{framenumber}{0}
+
+% ----------------------------------------------------------------------------
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                              MOTIVATION                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Motivation}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                              OUTLINE                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Outline}
+    \tableofcontents[hideallsubsections]
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                CONTENT                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Content}
+\begin{frame}{Content}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                         CONCLUDING REMARKS                                  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Concluding Remarks}
+\begin{frame}{Concluding Remarks}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                              APPENDIX                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+
+\begin{frame}[t,plain]
+  \vfill
+  \begin{center}
+  {\handwriting\textcolor{tangocolordarkscarletred}{Thank you for your attention! \smiley}}
+  \end{center}
+  \vfill
+\end{frame}
+
+\begin{frame}[t,plain]
+  \titlepage%
+\end{frame}
+
+\nocite{*}
+\begin{frame}[t,plain,allowframebreaks]
+  \frametitle{References}
+  \printbibliography
+\end{frame}
+
+\end{document}

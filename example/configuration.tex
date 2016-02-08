@@ -1,0 +1,213 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Language                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[english]{babel}
+\usepackage[babel]{csquotes}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Graphics                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.eps,.png}
+\graphicspath{{img/}}
+\usepackage{epstopdf}
+\usepackage[font=small,labelfont=bf,labelsep=colon]{caption}
+\usepackage{subcaption}
+\captionsetup{compatibility=false}
+\addto\captionsenglish{\renewcommand{\figurename}{\textsc{Figure}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Bibliography                                             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[backend=biber,
+            backref=true,
+            style=verbose,
+            autocite=footnote,
+            maxalphanames=1,
+            maxcitenames=4,
+            url=false,
+            sortcites
+            ]{biblatex}
+
+\renewcommand*{\bibfont}{\small}
+
+\renewcommand{\footnotesize}{\scriptsize}
+
+\DefineBibliographyStrings{english}{%
+  mathesis = {Master Thesis},
+}
+
+\renewbibmacro*{name:andothers}{% Based on name:andothers from biblatex.def
+  \ifboolexpr{
+    test {\ifnumequal{\value{listcount}}{\value{liststop}}}
+    and
+    test \ifmorenames
+  }
+    {\ifnumgreater{\value{liststop}}{1}
+       {\finalandcomma}
+       {}%
+     \andothersdelim\bibstring[\emph]{andothers}}
+    {}}
+
+
+\bibliography{references}
+
+\renewbibmacro{in:}{}
+
+\DefineBibliographyStrings{english}{%
+  backrefpage = {cited on slide},    % originally "cited on page"
+  backrefpages = {cited on slides},  % originally "cited on pages"
+}
+
+\DeclareNolabel{\nolabel{\regexp{}}}
+
+\renewcommand*{\labelalphaothers}{}
+
+\DeclareLabelalphaTemplate{
+  \labelelement{
+   \field[final]{shorthand}
+   \field[compound=true]{labelname}
+   \field{label}
+  }
+  \labelelement{
+    \literal{\addhighpenspace}
+  }
+  \labelelement{
+    \field{year}
+  }
+}
+
+\defbibenvironment{bibliography}
+  {\list
+     {\printtext[labelalphawidth]{%
+        \printfield{labelalpha}%
+        \printfield{extraalpha}}}
+     {\setlength{\leftmargin}{\bibhang}%
+      \setlength{\itemindent}{\biblabelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}}}
+  {\endlist}
+  {\item}
+
+
+% Bibtex default commands
+\let\citep\cite
+\let\cite\parencite
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Links                                                    %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xcolor}
+\definecolor{darkred}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\definecolor{darkblue}{RGB}{0,0,102}
+
+\usepackage{hyperref}
+\hypersetup{
+  unicode      = true,         % non-Latin characters in Acrobat's bookmarks
+  pdftoolbar   = true,          % show Acrobat's toolbar?
+  pdfmenubar   = true,          % show Acrobat's menu?
+  pdffitwindow = false,         % window fit to page when opened
+  pdfstartview = {FitH},        % fits the width of the page to the window
+  pdftitle     = {Automatic Verification of Interactive Multimedia Scenarios with Branching Behavior},  % title
+  pdfauthor    = {Jaime Arias}, % author
+  pdfsubject   = {Colloquium Computer Science - University of Groningen}, % subject of the document
+  pdfcreator   = {},            % creator of the document
+  pdfproducer  = {},            % producer of the document
+  pdfkeywords  = {interactive scenarios} {formal methods} {real time}, % list of keywords
+  pdfnewwindow = true,          % links in new PDF window
+  colorlinks   = true,          % false: boxed links; true: colored links
+  linkcolor    = darkblue,         % color of internal links (change box color with linkbordercolor)
+  linktoc      = all,           % defines which part of an entry in the table of contents is made into a link
+  citecolor    = darkred,       % color of links to bibliography
+  filecolor    = darkgreen,     % color of file links
+  urlcolor     = darkblue,      % color of external links
+  breaklinks   = true,          % allows link to break
+}
+
+\addtobeamertemplate{footline}{\hypersetup{hidelinks}}{}
+
+\def\figureautorefname{Figure}
+\def\tableautorefname{Table}
+\def\lstlistingautorefname{Program}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Maths                                                    %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{mathtools}
+
+\declaretheoremstyle[
+  spaceabove=\topsep,
+  spacebelow=\topsep,
+  headfont=\normalfont\bfseries,
+  notefont=\normalfont\bfseries,
+  bodyfont=\normalfont,
+  headpunct=,
+  notebraces={(}{)},
+%  postheadspace=,
+%  headformat=,
+%  headindent=,
+  % numberwithin=chapter,
+  prefoothook={\vspace{3mm}\hrule\noindent},
+  postheadhook={\hrule\vspace{2mm}\noindent},
+  postheadhook={\mbox{}\newline\vskip-1.75ex\hrule\vskip1ex\noindent{}\hspace{-1mm}}
+]{linestyle}
+
+\declaretheoremstyle[
+  spaceabove=\topsep,
+  spacebelow=\topsep,
+  headfont=\normalfont\bfseries,
+  notefont=\normalfont\bfseries,
+  bodyfont=\normalfont\itshape,
+  headpunct=,
+  notebraces={$\langle$}{$\rangle$},
+  postheadspace=\newline,
+  % numberwithin=chapter,
+]{theoremstyle}
+
+
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep\scshape\bfseries
+    #1\@addpunct{:}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+
+\declaretheorem[style=linestyle]{mydefinition}
+\declaretheorem[style=linestyle]{myexample}
+
+\declaretheorem[style=theoremstyle]{mytheorem}
+\declaretheorem[style=theoremstyle]{myproposition}
+\declaretheorem[style=theoremstyle]{mylemma}
+\declaretheorem[style=theoremstyle]{mycorollary}
+
+\providecommand*{\definitionautorefname}{Definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Frames                                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[innerleftmargin=3pt,
+            innerrightmargin=3pt,
+            skipabove=0pt,
+            skipbelow=0pt,
+            innertopmargin=0pt,
+            innerbottommargin=10pt,
+            nobreak=true
+            ]{mdframed}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Tables                                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{multirow}
+\addto\captionsenglish{\renewcommand{\tablename}{\textsc{Table}}}
