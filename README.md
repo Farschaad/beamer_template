@@ -13,3 +13,7 @@ Beamer template that I use for my presentations
 
 └── theme -> the beamer theme
 
+## Installation
+To install please run the `install.sh` file. For the example is necessary to
+install the `biber` package.
+
